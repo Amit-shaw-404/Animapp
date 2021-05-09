@@ -1,0 +1,22 @@
+.details {
+  background-color: #f8f8f8;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-family: lato;
+}
+.userInfo{
+  margin:10px 0 0 0;
+}
+.mainInfo {
+  display: flex;
+}
+.userName {
+  color: #1675B6;
+}
+.content{
+  font-family:lato;
+  font-weight: 500;
+  font-size:14px;
+  margin:10px;
+}

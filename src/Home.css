@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Eczar:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,300;1,400&display=swap");
+.root {
+  display: flex;
+  min-height: 100px;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+}
+.root .title {
+  font-family: "Eczar";
+  font-size: 1.2rem;
+}
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: "Lato";
+}
+.tabs h2 {
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.tabs h2:hover {
+  border-bottom: 2px solid white;
+}

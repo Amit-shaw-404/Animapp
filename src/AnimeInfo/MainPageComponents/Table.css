@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+  min-width: 200px;
+}
+td {
+  text-align: left;
+}
+table,
+th,
+td {
+  padding: 25px 10px;
+  font-family:lato;
+}
+tr:nth-child(odd) {
+  background: #f8f8f8;
+}
