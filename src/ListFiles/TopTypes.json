@@ -1,0 +1,26 @@
+[
+  {
+    "label": "Movie",
+    "value": "movie"
+  },
+  {
+    "label": "Upcoming",
+    "value": "upcoming"
+  },
+  {
+    "label": "Tv",
+    "value": "tv"
+  },
+  {
+    "label": "Airing",
+    "value": "airing"
+  },
+  {
+    "label": "Ova",
+    "value": "ova"
+  },
+  {
+    "label": "Special",
+    "value": "special"
+  }
+]
