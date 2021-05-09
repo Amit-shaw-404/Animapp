@@ -1,0 +1,30 @@
+[
+  {
+    "label":"All",
+    "value":"all"
+  },
+  {
+    "label": "Tv",
+    "value": "tv"
+  },
+  {
+    "label": "Ova",
+    "value": "ova"
+  },
+  {
+    "label": "Movie",
+    "value": "movie"
+  },
+  {
+    "label": "Special",
+    "value": "special"
+  },
+  {
+    "label": "Ona",
+    "value": "ona"
+  },
+  {
+    "label": "Music",
+    "value": "music"
+  }
+]
