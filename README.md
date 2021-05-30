@@ -8,7 +8,7 @@
 
 ## Pages
 
-<img src="./public/toplist.png" width="450px"/> <img src="./public/searchpage.png" width="450px"/> <img src="./public/details.png" width="450px"/> <img src="./public/Episodes.png" width="450px"/> <img src="./public/reviews.png" width="450px"/> <img src="./public/recommendations.png" width="450px"/> <img src="./public/photos.png" width="450px"/> <img src="./public/characters.png" width="450px"/>
+<img src="./public/toplist.png" width="400px"/> <img src="./public/searchpage.png" width="400px"/> <img src="./public/details.png" width="400px"/> <img src="./public/Episodes.png" width="400px"/> <img src="./public/reviews.png" width="400px"/> <img src="./public/recommendations.png" width="400px"/> <img src="./public/photos.png" width="400px"/> <img src="./public/characters.png" width="400px"/>
 
 ## Link of the website
 - #### [Animapp](https://animapp1.herokuapp.com/)
