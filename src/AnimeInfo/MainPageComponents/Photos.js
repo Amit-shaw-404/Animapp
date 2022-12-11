@@ -26,7 +26,6 @@ export default function Photos() {
       const pics = await axios.get(
         `https://api.jikan.moe/v4/anime/${id}/pictures`
       );
-      console.log(pics.data.data);
       setPhotos(pics.data.data);
     };
     request();

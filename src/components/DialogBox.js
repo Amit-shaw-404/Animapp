@@ -39,7 +39,6 @@ export default function DialogBox({
   setType,
   pos
 }) {
-  console.log(pos);
   const classes = useStyles(pos);
   return (
     <Dialog

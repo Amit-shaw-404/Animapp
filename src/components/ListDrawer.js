@@ -15,18 +15,15 @@ const useStyles = makeStyles({
 export default function ListDrawer({ open, setOpen, selected, setSelected }) {
   const isActive = (value) => {
     let active = selected.find((item) => item === value);
-    console.log(active);
     if (active === undefined) return false;
     return true;
   };
   const setActive = (value) => {
-    console.log(value + "is active");
     const arr = selected;
     arr.push(value);
     setSelected(arr);
   };
   const deActive = (value) => {
-    console.log(value + "is deactive");
     setSelected(selected.filter((item) => item.value !== value));
   };
   const classes = useStyles();

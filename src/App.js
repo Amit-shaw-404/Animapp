@@ -35,7 +35,8 @@ export default function App() {
         </div>
       </AppBar>
       <Switch>
-        <Redirect exact from="/" to={`/toplist`} />
+        {/* <Redirect exact from="/" to={`/toplist`} /> */}
+        <Route exact path={`/`} render={(props) => <TopList />} />
         <Route exact path={`/toplist`} render={(props) => <TopList />} />
         <Route exact path={`/search`} render={(props) => <SearchPage />} />
         <Route exact path={`/animeinfo/:id`} render={(props) => <MainPage />} />

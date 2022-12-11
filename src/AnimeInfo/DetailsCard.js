@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 const DetailsCards = ({ details }) => {
-  console.log(details);
   const classes = useStyles();
   return (
     <div className={classes.card}>

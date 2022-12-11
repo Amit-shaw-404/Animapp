@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Animapp/static/css/main.8226abb6.chunk.css",
+    "main.js": "/Animapp/static/js/main.831e3787.chunk.js",
+    "main.js.map": "/Animapp/static/js/main.831e3787.chunk.js.map",
+    "runtime-main.js": "/Animapp/static/js/runtime-main.7e1557f8.js",
+    "runtime-main.js.map": "/Animapp/static/js/runtime-main.7e1557f8.js.map",
+    "static/js/2.ae437f98.chunk.js": "/Animapp/static/js/2.ae437f98.chunk.js",
+    "static/js/2.ae437f98.chunk.js.map": "/Animapp/static/js/2.ae437f98.chunk.js.map",
+    "index.html": "/Animapp/index.html",
+    "static/css/main.8226abb6.chunk.css.map": "/Animapp/static/css/main.8226abb6.chunk.css.map",
+    "static/js/2.ae437f98.chunk.js.LICENSE.txt": "/Animapp/static/js/2.ae437f98.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7e1557f8.js",
+    "static/js/2.ae437f98.chunk.js",
+    "static/css/main.8226abb6.chunk.css",
+    "static/js/main.831e3787.chunk.js"
+  ]
+}
