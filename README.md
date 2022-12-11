@@ -11,10 +11,8 @@
 <img src="./public/toplist.png" width="400px"/> <img src="./public/searchpage.png" width="400px"/> <img src="./public/details.png" width="400px"/> <img src="./public/Episodes.png" width="400px"/> <img src="./public/reviews.png" width="400px"/> <img src="./public/recommendations.png" width="400px"/> <img src="./public/photos.png" width="400px"/> <img src="./public/characters.png" width="400px"/>
 
 ## Link of the website
-- #### [Animapp](https://animapp1.herokuapp.com/)
+- #### [Animapp](https://animapp13.netlify.app/)
 
-## Issue
-- Because of the size of package it takes some time to load the website.
 <!--- 
 - if you see this error please try refreshing the page
 ![alt issue](http://picsum.photos/200/200)
