@@ -47,9 +47,9 @@ export default function CharacterStaff() {
   useEffect(() => {
     const request = async () => {
       const s = await axios.get(
-        `https://api.jikan.moe/v3/anime/${id}/characters_staff`
+        `https://api.jikan.moe/v4/anime/${id}/characters`
       );
-      setChar(s.data.characters);
+      setChar(s.data.data);
       // console.log(s.data.characters[0].voice_actors[0].image_url);
     };
     request();
@@ -75,7 +75,7 @@ export default function CharacterStaff() {
                     ></img>
                   </div>
                   <div className={classes.info}>
-                    <h4>{item.name}</h4>
+                    <h4>{item.character?.name}</h4>
                     <p>{item.role}</p>
                   </div>
                 </div>
@@ -83,7 +83,7 @@ export default function CharacterStaff() {
                   <div className={classes.info}>
                     <h4>
                       {item.voice_actors.map((VA, index) =>
-                        index === 0 ? VA.name : null
+                        index === 0 ? VA.person.name : null
                       )}
                     </h4>
                     <p>
@@ -94,9 +94,9 @@ export default function CharacterStaff() {
                   </div>
                   <div className={classes.img}>
                     <img
-                      src={handleSource(item.voice_actors)}
+                      src={item.voice_actors[0]?.person.images?.jpg?.image_url}
                       alt={item.voice_actors.map((VA, index) =>
-                        index === 0 ? VA.name : null
+                        index === 0 ? VA.person.name : null
                       )}
                       width="100%"
                     ></img>

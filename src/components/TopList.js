@@ -38,19 +38,30 @@ export default function TopList() {
       var List;
       if (type !== "")
         List = await axios.get(
-          `https://api.jikan.moe/v3/top/anime/${page}/${type}`
+          `https://api.jikan.moe/v4/top/anime`,
+          {
+            params:
+            {
+              page,
+              type
+            }
+          }
         );
-      else List = await axios.get(`https://api.jikan.moe/v3/top/anime/${page}`);
-      setResult(List.data.top);
+      else List = await axios.get(`https://api.jikan.moe/v4/top/anime`, {params: {page:page}});
+      setResult(List.data.data);
     };
     request();
   }, [type, page]);
   const handlePageChange = (x) => {
     setPage(x);
   };
+  let ref = useRef();
+  let handleScroll=()=>{
+    ref.current.scrollIntoView();
+  }
   const classes = useStyles();
   return (
-    <div>
+    <div ref={ref}>
       <div className={classes.container}>
         <Typography variant="h6" style={{ margin: "10%" }}>
           Top Anime List
@@ -88,6 +99,7 @@ export default function TopList() {
           current={page}
           total={100}
           handlePageChange={handlePageChange}
+          handleScroll={handleScroll}
         />
       </div>
     </div>

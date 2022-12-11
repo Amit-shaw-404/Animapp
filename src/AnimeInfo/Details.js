@@ -73,8 +73,8 @@ export default function Details() {
   const id=getId(path);
   useEffect(() => {
     const request = async () => {
-      const data = await axios.get(`https://api.jikan.moe/v3/anime/${id}`);
-      setDetails(data.data);
+      const data = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
+      setDetails(data.data.data);
     };
     request();
   }, []);
@@ -83,7 +83,7 @@ export default function Details() {
     <div className={classes.root}>
       <div className={classes.img}>
         <img
-          src={details.image_url}
+          src={details.images?.jpg?.image_url}
           alt={details.title}
           style={{ width: "100%" }}
         />

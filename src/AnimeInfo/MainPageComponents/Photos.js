@@ -24,9 +24,10 @@ export default function Photos() {
   useEffect(() => {
     const request = async () => {
       const pics = await axios.get(
-        `https://api.jikan.moe/v3/anime/${id}/pictures`
+        `https://api.jikan.moe/v4/anime/${id}/pictures`
       );
-      setPhotos(pics.data.pictures);
+      console.log(pics.data.data);
+      setPhotos(pics.data.data);
     };
     request();
   }, []);
@@ -43,7 +44,7 @@ export default function Photos() {
         ? photos.map((item, index) => (
             <GridListTile key={index}>
               <a href={item.large}>
-                <img src={item.large} alt={index} width="100%"/>
+                <img src={item.jpg?.image_url} alt={index} width="100%"/>
               </a>
             </GridListTile>
           ))

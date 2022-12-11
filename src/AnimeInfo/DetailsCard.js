@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 const DetailsCards = ({ details }) => {
+  console.log(details);
   const classes = useStyles();
   return (
     <div className={classes.card}>
@@ -45,36 +46,36 @@ const DetailsCards = ({ details }) => {
       <div className={classes.cardContent}>
         <p style={{ margin: "5px 0" }}>
           <span className={classes.span}>Type : </span>
-          {details.type}
+          {details.data?.type}
         </p>
         <p style={{ margin: "5px 0" }}>
           <span className={classes.span}>Episodes : </span>
-          {details.episodes}
+          {details.data?.episodes}
         </p>
         <p style={{ margin: "5px 0" }}>
           <span className={classes.span}>Status : </span>
-          {details.status}
+          {details.data?.status}
         </p>
         <p style={{ margin: "5px 0" }}>
           <span className={classes.span}>Duration : </span>
-          {details.duration}
+          {details.data?.duration}
         </p>
         <p style={{ margin: "5px 0" }}>
           <span className={classes.span}>Premiered : </span>
-          {details.premiered}
+          {details.data?.premiered}
         </p>
         <p style={{ margin: "5px 0" }}>
           <span className={classes.span}>Broadcast : </span>
-          {details.broadcast}
+          {details.data?.broadcast.string}
         </p>
         <p style={{ margin: "5px 0" }}>
           <span className={classes.span}>Content rating : </span>
-          {details.rating}
+          {details.data?.rating}
         </p>
         <p style={{ margin: "5px 0" }}>
           <span className={classes.span}>Genres: </span>
-          {details.genres !== undefined
-            ? details.genres.map((item, index) => <span key={index}>{item.name}, </span>)
+          {details.data?.genres !== undefined
+            ? details.data?.genres.map((item, index) => <span key={index}>{item.name}, </span>)
             : null}
         </p>
       </div>

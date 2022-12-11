@@ -45,23 +45,23 @@ const DetailsCards = ({ details }) => {
       <div className={classes.cardContent}>
         <p style={{ margin: "5px 0" }}>
           <span className={classes.span}>Score : </span>
-          {details.score}
+          {details.data?.score}
         </p>
         <p style={{ margin: "5px 0" }}>
           <span className={classes.span}>Rank : </span>
-          {details.rank}
+          {details.data?.rank}
         </p>
         <p style={{ margin: "5px 0" }}>
           <span className={classes.span}>Popularity : </span>
-          {details.popularity}
+          {details.data?.popularity}
         </p>
         <p style={{ margin: "5px 0" }}>
           <span className={classes.span}>Members : </span>
-          {details.members}
+          {details.data?.members}
         </p>
         <p style={{ margin: "5px 0" }}>
           <span className={classes.span}>Faviorites : </span>
-          {details.favorites}
+          {details.data?.favorites}
         </p>
       </div>
     </div>

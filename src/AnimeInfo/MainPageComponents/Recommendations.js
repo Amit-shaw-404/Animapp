@@ -35,9 +35,14 @@ export default function Recommendation() {
   useEffect(() => {
     const request = async () => {
       const rec = await axios.get(
-        `https://api.jikan.moe/v3/anime/${id}/recommendations`
+        `https://api.jikan.moe/v4/anime/${id}/recommendations`,
+        {
+          params:{
+            page:1
+          }
+        }
       );
-      setRecommend(rec.data.recommendations);
+      setRecommend(rec.data.data);
     };
     request();
   }, []);
@@ -51,8 +56,8 @@ export default function Recommendation() {
         {recommend !== undefined
           ? recommend.map((item, index) => (
               <GridListTile key={index}>
-                <img src={item.image_url} alt={index} />
-                <GridListTileBar title={item.title} />
+                <img src={item.entry?.images?.jpg?.image_url} alt={index} />
+                <GridListTileBar title={item.entry?.title} />
               </GridListTile>
             ))
           : null}

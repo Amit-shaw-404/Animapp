@@ -45,9 +45,17 @@ const SearchPage = () => {
   useEffect(() => {
     const requestSearch = async () => {
       const List = await axios.get(
-        `https://api.jikan.moe/v3/search/anime?q=${finalTerm}&type=${type}&page=1`
+        `https://api.jikan.moe/v4/anime`,
+        {
+          params:
+          {
+            q: finalTerm,
+            type,
+            page: 1
+          }
+        }
       );
-      setResult(List.data.results);
+      setResult(List.data.data);
     };
     if (finalTerm !== "") requestSearch();
   }, [finalTerm, type]);

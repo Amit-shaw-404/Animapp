@@ -22,6 +22,7 @@ import Review from "./MainPageComponents/Review";
 import Episode from "./MainPageComponents/Episode";
 import Recommendations from "./MainPageComponents/Recommendations";
 import CharacterStaff from "./MainPageComponents/CharacterStaff";
+import ContentHolder from "../components/ContentHolder";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -98,28 +99,39 @@ const MainPage = (props) => {
   const history = useHistory();
   const path = history.location.pathname;
   const id = path.substring(11, path.length);
-  const [details, setDetails] = useState({});
+  const [detailValues, setDetailValues] = useState({});
   const [recommend, setRecommend] = useState([]);
   const [review, setReview] = useState([]);
   const [showrec, setShowrec] = useState(true);
   const [showrev, setShowrev] = useState(true);
   useEffect(() => {
     const request = async () => {
-      const data = await axios.get(`https://api.jikan.moe/v3/anime/${id}`);
+      const data = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
       const rec = await axios.get(
-        `https://api.jikan.moe/v3/anime/${id}/recommendations`
+        `https://api.jikan.moe/v4/anime/${id}/recommendations`,{
+          params: {
+            page: 1
+          }
+        }
       );
       const rev = await axios.get(
-        `https://api.jikan.moe/v3/anime/${id}/reviews`
+        `https://api.jikan.moe/v4/anime/${id}/reviews`, {
+          params: {
+            page: 1
+          }
+        }
       );
-      setDetails(data.data);
-      setRecommend(rec.data.recommendations);
-      setReview(rev.data.reviews);
+      console.log(data.data.data);
+      setDetailValues(data.data);
+      setRecommend(rec.data.data);
+      // console.log(rec.data.data)
+      setReview(rev.data.data);
+      // console.log(rev.data.data)
     };
     request();
     ModifyContent();
   }, []);
-  const ModifyContent = () => {};
+  const ModifyContent = () => { };
   const classes = useStyles();
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.only("sm"));
@@ -135,10 +147,10 @@ const MainPage = (props) => {
           <Grid item lg={4} md={3} xs={12} sm={12}>
             <div style={{ width: "100%" }}>
               <div style={{ width: "100%" }}>
-                <DetailsCards details={details} />
+                <DetailsCards details={detailValues} />
               </div>
               <div style={{ margin: "30px 0", width: "100%" }}>
-                <StatisticCard details={details} />
+                <StatisticCard details={detailValues} />
               </div>
             </div>
           </Grid>
@@ -146,7 +158,7 @@ const MainPage = (props) => {
             <div className={classes.right}>
               <div className={classes.rightMain}>
                 <div className={classes.mainNav}>
-                  <h1 style={{ color: "#276291" }}>{details.title}</h1>
+                  <h1 style={{ color: "#276291" }}>{detailValues.title}</h1>
                   <Router>
                     <ul className={classes.nav}>
                       <h3>
@@ -236,7 +248,7 @@ const MainPage = (props) => {
                       <Route
                         exact
                         path={`${history.location.pathname}/episodes`}
-                        render={() => <Episode total={details.episodes}/>}
+                        render={() => <Episode total={detailValues.episodes} />}
                       />
                       <Route
                         exact
@@ -274,13 +286,13 @@ const MainPage = (props) => {
                     >
                       {recommend !== undefined
                         ? recommend.map((item, index) =>
-                            index < 4 ? (
-                              <GridListTile key={index}>
-                                <img src={item.image_url} alt={index} />
-                                <GridListTileBar title={item.title} />
-                              </GridListTile>
-                            ) : ""
-                          )
+                          index < 4 ? (
+                            <GridListTile key={index}>
+                              <img src={item.entry?.images?.jpg?.image_url} alt={index} />
+                              <GridListTileBar title={item.entry?.title} />
+                            </GridListTile>
+                          ) : ""
+                        )
                         : ""}
                     </GridList>
                     <Divider style={{ width: "100%", margin: "5px 0" }} />
@@ -295,43 +307,43 @@ const MainPage = (props) => {
                   <div className={classes.content}>
                     {review !== undefined
                       ? review.map((item, index) =>
-                          index < 2 ? (
-                            <div key={index} className="container">
-                              <div className="details">
-                                <div className="mainInfo">
-                                  <Avatar
-                                    src={item.reviewer.image_url}
-                                    alt={item.reviewer.username}
-                                    style={{
-                                      margin: "5px 10px",
-                                      width: "60px",
-                                      height: "60px"
-                                    }}
-                                  />
-                                  <div className="userInfo">
-                                    <h4 className="userName">
-                                      {item.reviewer.username}
-                                    </h4>
-                                    <p style={{ fontSize: "14px" }}>
-                                      {item.helpful_count} people found this
-                                      helpful
-                                    </p>
-                                    <p style={{ fontSize: "14px" }}>
-                                      Overall{" "}
-                                      <span style={{ fontWeight: "700" }}>
-                                        {item.reviewer.scores.overall}
-                                      </span>
-                                      /10
-                                    </p>
-                                  </div>
+                        index < 2 ? (
+                          <div key={index} className="container">
+                            <div className="details">
+                              <div className="mainInfo">
+                                <Avatar
+                                  src={item.user.images.jpg.image_url}
+                                  alt={item.user.username}
+                                  style={{
+                                    margin: "5px 10px",
+                                    width: "60px",
+                                    height: "60px"
+                                  }}
+                                />
+                                <div className="userInfo">
+                                  <h4 className="userName">
+                                    {item.user.username}
+                                  </h4>
+                                  <p style={{ fontSize: "14px" }}>
+                                    {item.helpful_count} people found this
+                                    helpful
+                                  </p>
+                                  <p style={{ fontSize: "14px" }}>
+                                    Overall{" "}
+                                    <span style={{ fontWeight: "700" }}>
+                                      {item.score}
+                                    </span>
+                                    /10
+                                  </p>
                                 </div>
                               </div>
-                              <div className="content">
-                                <p>{item.content.replace(/\\n/g,"")}</p>{" "}
-                              </div>
                             </div>
-                          ) : null
-                        )
+                            <div className="content">
+                              <ContentHolder content={item.review.replace(/\\n/g, "")}/>
+                            </div>
+                          </div>
+                        ) : null
+                      )
                       : null}
                     <Divider style={{ width: "100%", margin: "5px 0" }} />
                   </div>

@@ -32,7 +32,7 @@ export default function SearchList({ result, rank }) {
       {result.length > 0
         ? result.map((item) => (
             <GridListTile key={item.mal_id}>
-              <img src={item.image_url} alt={item.title} />
+              <img src={item.images.jpg.image_url} alt={item.title} />
               {rank ? (
                 <GridListTileBar
                   title={

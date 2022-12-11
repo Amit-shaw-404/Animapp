@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import NextPage from "../../components/NextPage";
 import "./Table.css";
@@ -15,23 +15,37 @@ export default function Episdoe({ total }) {
     }
     return path.substring(l, i);
   };
+  let ref = useRef();
   const history = useHistory();
   const path = history.location.pathname;
   const id = getId(path);
   useEffect(() => {
     const request = async () => {
       const epi = await axios.get(
-        `https://api.jikan.moe/v3/anime/${id}/episodes/${page}`
+        `https://api.jikan.moe/v4/anime/${id}/episodes`,{
+          params:{
+            page
+          }
+        }
       );
-      setEp(epi.data.episodes);
+      setEp(epi.data.data);
     };
     request();
   }, [page]);
   const handlePageChange = (x) => {
     setPage(x);
   };
+
+  let getDate=(formated_Date)=>{
+      const date = new Date(formated_Date);
+      return `${date.getDate()}/${date.getMonth() +1 }/${date.getYear()}, ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  }
+
+  let handleScroll=()=>{
+    ref.current.scrollIntoView();
+  }
   return (
-    <div>
+    <div ref = {ref}>
       <table>
         <tbody>
         {ep.map((item) => (
@@ -42,7 +56,7 @@ export default function Episdoe({ total }) {
                 <h3>{item.title}</h3>
               </div>
               <p>
-                Aired-{item.aired} {item.filler ? "Filler" : null}
+                Aired-{getDate(item.aired)} {item.filler ? "Filler" : null}
               </p>
             </td>
           </tr>
@@ -54,6 +68,7 @@ export default function Episdoe({ total }) {
             current={page}
             total={Math.ceil(total / 100)}
             handlePageChange={handlePageChange}
+            handleScroll={handleScroll}
           />
       </div>
     </div>
